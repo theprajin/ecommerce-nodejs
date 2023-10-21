@@ -8,7 +8,7 @@
 #### In .env file
 
 - create MONGO_URL variable with value related to MongoDB connection(offline or online MongoDB database can be used)
-- add variables in JWT_SECRET=jwtSecret (or any secret texts to be used) and JWT_LIFETIME=1d(or any time you want to set)
+- add variables in JWT_SECRET=jwtSecret (or any secret texts to be used) and JWT_LIFETIME=1d (or the time you want to set)
 
 #### Starting the server
 
