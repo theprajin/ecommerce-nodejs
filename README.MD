@@ -14,6 +14,6 @@
 
 - hit "npm start" on terminal
 
-#### Testing api endpoints
+#### Testing API endpoints
 
 - Use Postman or any web clients of your choice
