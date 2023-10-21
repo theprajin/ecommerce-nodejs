@@ -1,0 +1,47 @@
+require("dotenv").config();
+require("express-async-errors");
+
+//express
+const express = require("express");
+const app = express();
+
+//rest of the packages
+const morgan = require("morgan");
+const cookieParser = require("cookie-parser");
+
+//routers
+const authRouter = require("./routes/authRoutes");
+
+//database
+const connectDB = require("./db/connect");
+
+//middleware
+const notFoundMiddleware = require("./middleware/not-found");
+const errorHandlerMiddleware = require("./middleware/error-handler");
+
+app.use(morgan("tiny"));
+app.use(cookieParser());
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("Welcome to Auth Practice App");
+});
+
+app.get("/api/v1", (req, res) => {
+  console.log(req.cookies);
+  res.send("Welcome to Auth Practice App");
+});
+
+app.use("/api/v1/auth", authRouter);
+
+app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
+
+const port = process.env.PORT || 5000;
+const start = async () => {
+  await connectDB(process.env.MONGO_URL);
+  console.log("Successfully conneted to the database");
+  app.listen(port, console.log(`Server is listening on port: ${port}`));
+};
+
+start();
