@@ -37,7 +37,19 @@ const login = async (req, res) => {
   if (!user) {
     throw new CustomError.UnauthenticatedError("Invalid Credentials");
   }
-  res.send("login");
+
+  const isPasswordMatch = await user.comparePassword(password);
+  if (!isPasswordMatch) {
+    throw new CustomError.UnauthenticatedError("Invalid Credentials");
+  }
+
+  //creates a payload
+  const tokenUser = createTokenUser(user);
+
+  // attach token to http-only cookie
+  attachCookiesToResponse({ res, tokenUser });
+
+  res.status(StatusCodes.OK).json({ user: tokenUser });
 };
 
 // LOGOUT USERS
