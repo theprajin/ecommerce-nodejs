@@ -54,7 +54,12 @@ const login = async (req, res) => {
 
 // LOGOUT USERS
 const logout = async (req, res) => {
-  res.send("logout");
+  res.cookie("token", "logout", {
+    httpOnly: true,
+    expires: new Date(Date.now()),
+    secure: process.env.NODE_ENV === "production",
+  });
+  res.send("logged out successfully");
 };
 
 module.exports = {
