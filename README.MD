@@ -12,7 +12,7 @@
 
 #### Starting the server
 
-- hit npm start on terminal
+- hit "npm start" on terminal
 
 #### Testing api endpoints
 
