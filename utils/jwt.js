@@ -9,7 +9,7 @@ const createJWT = (payload) => {
 };
 
 // checks if the token for authentication is valid
-const isTokenMatch = (token) => {
+const isTokenMatch = ({ token }) => {
   const isMatch = jwt.verify(token, process.env.JWT_SECRET);
   return isMatch;
 };
