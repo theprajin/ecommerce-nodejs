@@ -18,10 +18,12 @@ router
   .route("/")
   .get(authenticateUser, authorizePermission("admin"), getAllUsers);
 
-router.route("/show-me").get(showCurrentUser);
-router.route("/update-user").patch(updateUser);
-router.route("/update-user-password").patch(updateUserPassword);
+router.route("/show-me").get(authenticateUser, showCurrentUser);
+router.route("/update-user").patchauthenticateUser, updateUser;
+router
+  .route("/update-user-password")
+  .patch(authenticateUser, updateUserPassword);
 
-router.route("/:id").get(getSingleUser);
+router.route("/:id").get(authenticateUser, getSingleUser);
 
 module.exports = router;

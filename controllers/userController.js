@@ -1,24 +1,32 @@
 const User = require("../models/User");
 const { StatusCodes } = require("http-status-codes");
+const CustomError = require("../errors");
 
-getAllUsers = async (req, res) => {
+const getAllUsers = async (req, res) => {
   const users = await User.find({ role: "user" }).select("-password");
   res.status(StatusCodes.OK).json({ users });
 };
 
-getSingleUser = async (req, res) => {
-  res.send("Get Single User");
+const getSingleUser = async (req, res) => {
+  const user = await User.findOne({ _id: req.params.id }).select("-password");
+  if (!user) {
+    throw new CustomError.BadRequestError(
+      `User with id: ${req.params.id} not found`
+    );
+  }
+
+  res.status(StatusCodes.OK).json({ user });
 };
 
-showCurrentUser = async (req, res) => {
-  res.send("Show Current User");
+const showCurrentUser = async (req, res) => {
+  res.status(StatusCodes.OK).json({ user: req.user });
 };
 
-updateUser = async (req, res) => {
+const updateUser = async (req, res) => {
   res.send("Update User");
 };
 
-updateUserPassword = async (req, res) => {
+const updateUserPassword = async (req, res) => {
   res.send("Update User Password");
 };
 
