@@ -1,13 +1,26 @@
+const Product = require("../models/Product");
+const { StatusCodes } = require("http-status-codes");
+const CustomError = require("../errors");
+
 const createProduct = async (req, res) => {
-  res.send("Create Product");
+  req.body.user = req.user.userId;
+  const product = await Product.create(req.body);
+  res.status(StatusCodes.CREATED).json({ product });
 };
 
 const getAllProducts = async (req, res) => {
-  res.send("Get All Products");
+  const products = await Product.find({});
+  res.status(StatusCodes.OK).json({ products });
 };
 
 const getSingleProduct = async (req, res) => {
-  res.send("Get Single Product");
+  const product = await Product.findOne({ _id: req.params.id });
+  if (!product) {
+    throw new CustomError.BadRequestError(
+      `Product with id: ${req.params.id} does not exist`
+    );
+  }
+  res.status(StatusCodes.OK).json({ product });
 };
 
 const updateProduct = async (req, res) => {
