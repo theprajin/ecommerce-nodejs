@@ -16,7 +16,7 @@ const router = express.Router();
 
 router
   .route("/")
-  .get(authenticateUser, authorizePermission("admin"), getAllUsers);
+  .get([authenticateUser, authorizePermission("admin")], getAllUsers);
 
 router.route("/show-me").get(authenticateUser, showCurrentUser);
 router.route("/update-user").patch(authenticateUser, updateUser);
