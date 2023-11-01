@@ -16,7 +16,7 @@ const getAllProducts = async (req, res) => {
 const getSingleProduct = async (req, res) => {
   const product = await Product.findOne({ _id: req.params.id });
   if (!product) {
-    throw new CustomError.BadRequestError(
+    throw new CustomError.NotFoundError(
       `Product with id: ${req.params.id} does not exist`
     );
   }
@@ -24,10 +24,31 @@ const getSingleProduct = async (req, res) => {
 };
 
 const updateProduct = async (req, res) => {
-  res.send("Update Product");
+  const { id: productId } = req.params;
+  const product = await Product.findOneAndUpdate({ _id: productId }, req.body, {
+    new: true,
+    runValidators: true,
+  });
+
+  if (!product) {
+    throw new CustomError.NotFoundError(
+      `Product with id: ${productId} does not exist`
+    );
+  }
+
+  res.status(StatusCodes.OK).json({ product });
 };
+
 const deleteProduct = async (req, res) => {
-  res.send("Delete Product");
+  const { id: productId } = req.params;
+  const product = await Product.findOneAndDelete({ _id: productId });
+  if (!product) {
+    throw new CustomError.NotFoundError(
+      `Product with id: ${productId} does not exist`
+    );
+  }
+
+  res.status(StatusCodes.OK).json({ product });
 };
 
 const uploadImage = async (req, res) => {
