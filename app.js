@@ -29,13 +29,9 @@ app.use(cookieParser(process.env.JWT_SECRET));
 app.use(express.static("./public"));
 app.use(fileUpload());
 
-app.get("/", (req, res) => {
-  res.send("Welcome to Auth Practice App");
-});
-
 app.get("/api/v1", (req, res) => {
   console.log(req.cookies);
-  res.send("Welcome to Auth Practice App");
+  res.send("Welcome to Node Ecommerce API");
 });
 
 app.use("/api/v1/auth", authRouter);

@@ -75,8 +75,6 @@ const uploadImage = async (req, res) => {
     "../public/uploads/" + `${productImage.name}`
   );
 
-  console.log(imagePath);
-
   await productImage.mv(imagePath);
   res.status(StatusCodes.OK).json({ image: `/uploads/${productImage.name}` });
 };
