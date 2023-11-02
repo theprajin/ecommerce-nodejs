@@ -39,7 +39,7 @@ app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 
 app.get("/api/v1", (req, res) => {
   console.log(req.cookies);
-  res.send("<h1>Node Ecommerce API</h1><a href='/api/docs'>Documentation</a>");
+  res.send("<h1>Node Ecommerce API</h1><a href='/api-docs'>Documentation</a>");
 });
 
 app.use("/api/v1/auth", authRouter);
