@@ -1,0 +1,483 @@
+openapi: 3.0.0
+info:
+  title: ecommerce-node
+  contact: {}
+  version: "1.0"
+servers:
+  - url: https://ecommerce-node-mzav.onrender.com/api/v1
+    variables: {}
+paths:
+  /auth/logout:
+    get:
+      tags:
+        - Auth
+      summary: Logout
+      operationId: Logout
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security: []
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Login
+      operationId: Login
+      parameters: []
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/LoginRequest"
+                - example:
+                    email: anna@gmail.com
+                    password: secret
+            example:
+              email: anna@gmail.com
+              password: secret
+        required: true
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security: []
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Register
+      operationId: Register
+      parameters: []
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/RegisterRequest"
+                - example:
+                    name: anna
+                    email: anna@gmail.com
+                    password: secret
+            example:
+              name: anna
+              email: anna@gmail.com
+              password: secret
+        required: true
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security: []
+  /users:
+    get:
+      tags:
+        - User
+      summary: Get All Users
+      operationId: GetAllUsers
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+  /user/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: The user ID
+    get:
+      tags:
+        - User
+      summary: Get Single User
+      operationId: GetSingleUser
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+  /users/showMe:
+    get:
+      tags:
+        - User
+      summary: Show Current User
+      operationId: ShowCurrentUser
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+  /users/updateUserPassword:
+    patch:
+      tags:
+        - User
+      summary: Update User Password
+      operationId: UpdateUserPassword
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+  /users/updateUser:
+    patch:
+      tags:
+        - User
+      summary: Update User
+      operationId: UpdateUser
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+  /products/:
+    get:
+      tags:
+        - Product
+      summary: Get All Products
+      operationId: GetAllProducts
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security: []
+    post:
+      tags:
+        - Product
+      summary: Create Product
+      operationId: CreateProduct
+      parameters: []
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/CreateProductRequest"
+                - example:
+                    name: test product
+                    price: 200
+                    description: This is a Air Fryer of premium quality
+                    category: kitchen
+                    company: liddy
+            example:
+              name: test product
+              price: 200
+              description: This is a Air Fryer of premium quality
+              category: kitchen
+              company: liddy
+        required: true
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+  /products/upload-image:
+    post:
+      tags:
+        - Product
+      summary: Upload Image
+      operationId: UploadImage
+      parameters: []
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+                - image
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+        required: false
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+  /products/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: The product ID
+    get:
+      tags:
+        - Product
+      summary: Get Single Product
+      operationId: GetSingleProduct
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security: []
+    patch:
+      tags:
+        - Product
+      summary: Update Product
+      operationId: UpdateProduct
+      parameters: []
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/UpdateProductRequest"
+                - example:
+                    name: hawa product
+                    price: 200
+                    description: This is a Air Fryer of premium quality
+                    category: kitchen
+                    company: liddy
+            example:
+              name: hawa product
+              price: 200
+              description: This is a Air Fryer of premium quality
+              category: kitchen
+              company: liddy
+        required: true
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+    delete:
+      tags:
+        - Product
+      summary: Delete Product
+      operationId: DeleteProduct
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+  /:
+    get:
+      tags:
+        - Product
+      summary: Get Single Product Review
+      operationId: GetSingleProductReview
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security: []
+  /reviews:
+    get:
+      tags:
+        - Review
+      summary: Get All Reviews
+      operationId: GetAllReviews
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security: []
+    post:
+      tags:
+        - Review
+      summary: Create Review
+      operationId: CreateReview
+      parameters: []
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/CreateReviewRequest"
+                - example:
+                    product: 6541e1a8c1a9e5764cb16cf4
+                    title: average product
+                    comment: average product
+                    rating: 3
+            example:
+              product: 6541e1a8c1a9e5764cb16cf4
+              title: average product
+              comment: average product
+              rating: 3
+        required: true
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+  /reviews/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: The review ID
+    patch:
+      tags:
+        - Review
+      summary: Update Review
+      operationId: UpdateReview
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+    delete:
+      tags:
+        - Review
+      summary: Delete Review
+      operationId: DeleteReview
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    LoginRequest:
+      title: LoginRequest
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: anna@gmail.com
+        password: secret
+    RegisterRequest:
+      title: RegisterRequest
+      required:
+        - name
+        - email
+        - password
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        name: anna
+        email: anna@gmail.com
+        password: secret
+    CreateProductRequest:
+      title: CreateProductRequest
+      required:
+        - name
+        - price
+        - description
+        - category
+        - company
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: integer
+          format: int32
+        description:
+          type: string
+        category:
+          type: string
+        company:
+          type: string
+      example:
+        name: test product
+        price: 200
+        description: This is a Air Fryer of premium quality
+        category: kitchen
+        company: liddy
+    UpdateProductRequest:
+      title: UpdateProductRequest
+      required:
+        - name
+        - price
+        - description
+        - category
+        - company
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: integer
+          format: int32
+        description:
+          type: string
+        category:
+          type: string
+        company:
+          type: string
+      example:
+        name: hawa product
+        price: 200
+        description: This is a Air Fryer of premium quality
+        category: kitchen
+        company: liddy
+    CreateReviewRequest:
+      title: CreateReviewRequest
+      required:
+        - product
+        - title
+        - comment
+        - rating
+      type: object
+      properties:
+        product:
+          type: string
+        title:
+          type: string
+        comment:
+          type: string
+        rating:
+          type: integer
+          format: int32
+      example:
+        product: 6541e1a8c1a9e5764cb16cf4
+        title: average product
+        comment: average product
+        rating: 3
+  securitySchemes:
+    httpBearer:
+      type: http
+      scheme: bearer
+security:
+  - httpBearer: []
+tags:
+  - name: Auth
+  - name: User
+  - name: Product
+  - name: Review
