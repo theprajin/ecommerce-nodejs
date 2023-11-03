@@ -42,8 +42,8 @@ app.use(
 
 app.use(helmet());
 app.use(cors());
-// app.use(xss());
-// app.use(mongoSanitize());
+app.use(xss());
+app.use(mongoSanitize());
 
 app.use(morgan("tiny"));
 app.use(express.json());
@@ -51,6 +51,12 @@ app.use(cookieParser(process.env.JWT_SECRET));
 
 app.use(express.static("./public"));
 app.use(fileUpload());
+
+app.get("/", (req, res) => {
+  return res.send(
+    "<h1><a href='/api-docs'>Node Ecommerce Documentation</a></h1>"
+  );
+});
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 

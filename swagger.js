@@ -2,8 +2,8 @@ const swaggerAutogen = require("swagger-autogen")();
 
 const doc = {
   info: {
-    title: "My API",
-    description: "Description",
+    title: "Node Ecommerce API",
+    description: "API of ecommerce project build with Express.js",
   },
 
   host: "ecommerce-node-mzav.onrender.com",
