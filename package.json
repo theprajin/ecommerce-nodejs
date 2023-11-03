@@ -4,7 +4,8 @@
   "description": "[E-Commerce API Render URL](https://node-course-e-commerce.onrender.com/)",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "swagger": "node ./swagger.js"
   },
   "author": "",
   "license": "ISC",
@@ -30,6 +31,7 @@
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "swagger-autogen": "^2.23.7"
   }
 }
