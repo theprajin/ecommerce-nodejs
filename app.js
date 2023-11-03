@@ -16,6 +16,7 @@ const xss = require("xss-clean");
 const helmet = require("helmet");
 const cors = require("cors");
 const mongoSanitize = require("express-mongo-sanitize");
+const swaggerUi = require("swagger-ui-express");
 
 //database
 const connectDB = require("./db/connect");
@@ -51,7 +52,7 @@ app.use(cookieParser(process.env.JWT_SECRET));
 app.use(express.static("./public"));
 app.use(fileUpload());
 
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerFile));
+app.use("/api-docs", swaggerUi.serve, swaggerUI.setup(swaggerFile));
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRouter);
