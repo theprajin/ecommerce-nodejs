@@ -5,7 +5,7 @@ const doc = {
     title: "My API",
     description: "Description",
   },
-  host: "https://ecommerce-node-mzav.onrender.com",
+  host: "ecommerce-node-mzav.onrender.com",
 };
 
 const outputFile = "./swagger-output.json";
