@@ -7,7 +7,7 @@ const doc = {
   },
 
   host: "ecommerce-node-mzav.onrender.com",
-  schemes: ["http", "https"],
+  schemes: ["https"],
 };
 
 const outputFile = "./swagger-output.json";
