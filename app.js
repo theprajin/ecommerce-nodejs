@@ -54,14 +54,6 @@ app.use(cookieParser(process.env.JWT_SECRET));
 app.use(express.static("./public"));
 app.use(fileUpload());
 
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
-
-app.get("/api/v1", (req, res) => {
-  console.log(req.cookies);
-  res.send("Welcome to Node Ecommerce");
-  // res.send("<h1>Node Ecommerce API</h1><a href='/api-docs'>Documentation</a>");
-});
-
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/products", productRouter);
