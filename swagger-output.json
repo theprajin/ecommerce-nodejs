@@ -42,6 +42,7 @@
     },
     "/api/v1/auth/login": {
       "post": {
+        "tags": ["Auth"],
         "description": "",
         "parameters": [
           {
@@ -69,6 +70,7 @@
     },
     "/api/v1/auth/logout": {
       "get": {
+        "tags": ["Auth"],
         "description": "",
         "responses": {
           "200": {
@@ -79,6 +81,7 @@
     },
     "/api/v1/users/": {
       "get": {
+        "tags": ["User"],
         "description": "",
         "responses": {
           "default": {
@@ -89,6 +92,7 @@
     },
     "/api/v1/users/show-me": {
       "get": {
+        "tags": ["User"],
         "description": "",
         "responses": {
           "default": {
@@ -99,6 +103,7 @@
     },
     "/api/v1/users/update-user": {
       "patch": {
+        "tags": ["User"],
         "description": "",
         "parameters": [
           {
@@ -126,6 +131,7 @@
     },
     "/api/v1/users/update-user-password": {
       "patch": {
+        "tags": ["User"],
         "description": "",
         "parameters": [
           {
@@ -153,6 +159,7 @@
     },
     "/api/v1/users/{id}": {
       "get": {
+        "tags": ["User"],
         "description": "",
         "parameters": [
           {
@@ -171,6 +178,7 @@
     },
     "/api/v1/products/": {
       "get": {
+        "tags": ["Product"],
         "description": "",
         "responses": {
           "default": {
@@ -179,6 +187,7 @@
         }
       },
       "post": {
+        "tags": ["Product"],
         "description": "",
         "parameters": [
           {
@@ -203,6 +212,7 @@
     },
     "/api/v1/products/upload-image": {
       "post": {
+        "tags": ["Product"],
         "description": "",
         "responses": {
           "default": {
@@ -213,6 +223,7 @@
     },
     "/api/v1/products/{id}": {
       "get": {
+        "tags": ["Product"],
         "description": "",
         "parameters": [
           {
@@ -229,6 +240,7 @@
         }
       },
       "delete": {
+        "tags": ["Product"],
         "description": "",
         "parameters": [
           {
@@ -245,6 +257,7 @@
         }
       },
       "patch": {
+        "tags": ["Product"],
         "description": "",
         "parameters": [
           {
@@ -263,6 +276,7 @@
     },
     "/api/v1/products/{id}/reviews": {
       "get": {
+        "tags": ["Product"],
         "description": "",
         "parameters": [
           {
@@ -281,6 +295,7 @@
     },
     "/api/v1/reviews/": {
       "get": {
+        "tags": ["Review"],
         "description": "",
         "responses": {
           "default": {
@@ -289,6 +304,7 @@
         }
       },
       "post": {
+        "tags": ["Review"],
         "description": "",
         "parameters": [
           {
@@ -316,6 +332,7 @@
     },
     "/api/v1/reviews/{id}": {
       "get": {
+        "tags": ["Review"],
         "description": "",
         "parameters": [
           {
@@ -332,6 +349,7 @@
         }
       },
       "delete": {
+        "tags": ["Review"],
         "description": "",
         "parameters": [
           {
@@ -348,6 +366,7 @@
         }
       },
       "patch": {
+        "tags": ["Review"],
         "description": "",
         "parameters": [
           {
@@ -384,6 +403,7 @@
     },
     "/api/v1/orders/": {
       "get": {
+        "tags": ["Order"],
         "description": "",
         "responses": {
           "default": {
@@ -392,6 +412,7 @@
         }
       },
       "post": {
+        "tags": ["Order"],
         "description": "",
         "parameters": [
           {
@@ -422,6 +443,7 @@
     },
     "/api/v1/orders/show-all-my-orders": {
       "get": {
+        "tags": ["Order"],
         "description": "",
         "responses": {
           "default": {
@@ -432,6 +454,7 @@
     },
     "/api/v1/orders/{id}": {
       "get": {
+        "tags": ["Order"],
         "description": "",
         "parameters": [
           {
@@ -448,6 +471,7 @@
         }
       },
       "patch": {
+        "tags": ["Order"],
         "description": "",
         "parameters": [
           {
