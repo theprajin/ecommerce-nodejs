@@ -9,9 +9,9 @@
   "basePath": "/",
   "schemes": ["https"],
   "paths": {
-    "name": "Register",
     "/api/v1/auth/register": {
       "post": {
+        "tags": ["Auth"],
         "description": "",
         "parameters": [
           {
