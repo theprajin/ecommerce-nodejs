@@ -54,7 +54,7 @@ app.use(fileUpload());
 
 app.get("/", (req, res) => {
   return res.send(
-    "<h1><a href='/api-docs'>Node Ecommerce Documentation</a></h1>"
+    "<h1>Node Ecommerce App</h1><a href='/api-docs'>Click to view documentation</a>"
   );
 });
 
