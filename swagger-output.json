@@ -7,10 +7,9 @@
   },
   "host": "ecommerce-node-mzav.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "paths": {
+    "name": "Register",
     "/api/v1/auth/register": {
       "post": {
         "description": "",
