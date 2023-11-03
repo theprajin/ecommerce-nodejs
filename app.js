@@ -15,11 +15,6 @@ const helmet = require("helmet");
 const cors = require("cors");
 const mongoSanitize = require("express-mongo-sanitize");
 
-//swagger
-const swaggerUI = require("swagger-ui-express");
-const YAML = require("yamljs");
-const swaggerDoc = YAML.load("./swagger.yaml");
-
 //database
 const connectDB = require("./db/connect");
 
