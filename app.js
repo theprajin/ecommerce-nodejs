@@ -6,6 +6,7 @@ const express = require("express");
 const app = express();
 
 const swaggerFile = require("./swagger-output.json");
+const swaggerFileLocal = require("./swagger-output-local.json");
 
 //rest of the packages
 const morgan = require("morgan");
@@ -52,13 +53,23 @@ app.use(cookieParser(process.env.JWT_SECRET));
 app.use(express.static("./public"));
 app.use(fileUpload());
 
+const port = process.env.PORT || 5000;
+
+
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use("/api-docs-local", swaggerUi.serve, swaggerUi.setup(swaggerFileLocal));
+
 app.get("/", (req, res) => {
+  if(port === 5000){
+    return res.send(
+      "<h1>Node Ecommerce App</h1><a href='/api-docs-local'>Click to view documentation</a>"
+    );
+  }
   return res.send(
     "<h1>Node Ecommerce App</h1><a href='/api-docs'>Click to view documentation</a>"
   );
 });
-
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRouter);
@@ -69,7 +80,6 @@ app.use("/api/v1/orders", orderRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-const port = process.env.PORT || 5000;
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URL);
