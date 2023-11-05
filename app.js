@@ -55,19 +55,17 @@ app.use(fileUpload());
 
 const port = process.env.PORT || 5000;
 
-
-
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use("/api-docs-local", swaggerUi.serve, swaggerUi.setup(swaggerFileLocal));
 
 app.get("/", (req, res) => {
-  if(port === 5000){
+  if (port !== 5000) {
     return res.send(
-      "<h1>Node Ecommerce App</h1><a href='/api-docs-local'>Click to view documentation</a>"
+      "<h1>Node Ecommerce App</h1><a href='/api-docs'>Click to view documentation</a>"
     );
   }
   return res.send(
-    "<h1>Node Ecommerce App</h1><a href='/api-docs'>Click to view documentation</a>"
+    "<h1>Node Ecommerce App</h1><a href='/api-docs-local'>Click to view documentation</a>"
   );
 });
 
