@@ -54,24 +54,28 @@ app.use(express.static("./public"));
 app.use(fileUpload());
 
 if (process.env.ENVIRON === "PROD") {
-  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+  app.use(
+    "/framework/api/documentation",
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerFile)
+  );
 
   app.get("/", (req, res) => {
     return res.send(
-      "<h1>Node Ecommerce App</h1><a href='/api-docs'>Click to view documentation</a>"
+      "<h1>Node Ecommerce App</h1><a href='/framework/api/documentation'>Click to view documentation</a>"
     );
   });
 }
 
 if (process.env.ENVIRON === "LOCAL") {
   app.use(
-    "/api-docs-local",
+    "/framework/api/documentation",
     swaggerUi.serve,
     swaggerUi.setup(swaggerFileLocal)
   );
   app.get("/", (req, res) => {
     return res.send(
-      "<h1>Node Ecommerce App</h1><a href='/api-docs-local'>Click to view documentation</a>"
+      "<h1>Node Ecommerce App</h1><a href='/framework/api/documentation'>Click to view documentation</a>"
     );
   });
 }
