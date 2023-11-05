@@ -5,7 +5,7 @@
     "description": "API of ecommerce project build with Express.js",
     "version": "1.0.0"
   },
-  "host": "ecommerce-node-mzav.onrender.com",
+  "host": ["ecommerce-node-mzav.onrender.com", "localhost:5000"],
   "basePath": "/",
   "schemes": ["https"],
   "paths": {
