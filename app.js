@@ -6,7 +6,7 @@ const express = require("express");
 const app = express();
 
 const swaggerFile = require("./swagger-output.json");
-// const swaggerFileLocal = require("./swagger-output-local.json");
+const swaggerFileLocal = require("./swagger-output-local.json");
 
 //rest of the packages
 const morgan = require("morgan");
@@ -56,7 +56,6 @@ app.use(fileUpload());
 const port = process.env.PORT || 5000;
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
-// app.use("/api-docs-local", swaggerUi.serve, swaggerUi.setup(swaggerFileLocal));
 
 app.get("/", (req, res) => {
   return res.send(
@@ -64,11 +63,16 @@ app.get("/", (req, res) => {
   );
 });
 
-// app.get("/api/local", (req, res) => {
-//   return res.send(
-//     "<h1>Node Ecommerce App</h1><a href='/api-docs-local'>Click to view documentation</a>"
-//   );
-// });
+app.get("/api/local", (req, res) => {
+  app.use(
+    "/api-docs-local",
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerFileLocal)
+  );
+  return res.send(
+    "<h1>Node Ecommerce App</h1><a href='/api-docs-local'>Click to view documentation</a>"
+  );
+});
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRouter);
