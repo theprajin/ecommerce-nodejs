@@ -16,4 +16,4 @@
 
 #### Testing API endpoints
 
-- Use Postman or any web clients of your choice
+- Hit "localhost:5000" on browser url and test the api with swagger UI
