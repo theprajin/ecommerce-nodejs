@@ -63,12 +63,8 @@ app.get("/", (req, res) => {
   );
 });
 
+app.use("/api-docs-local", swaggerUi.serve, swaggerUi.setup(swaggerFileLocal));
 app.get("/api/local", (req, res) => {
-  app.use(
-    "/api-docs-local",
-    swaggerUi.serve,
-    swaggerUi.setup(swaggerFileLocal)
-  );
   return res.send(
     "<h1>Node Ecommerce App</h1><a href='/api-docs-local'>Click to view documentation</a>"
   );
