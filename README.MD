@@ -19,3 +19,4 @@
 
 - Hit "localhost:5000" on browser url and test the api with swagger UI
 - Or you can direct enter the url: "localhost:5000/framework/api/documentation"
+- OR you can go to https://ecommerce-node-mzav.onrender.com/ to view the documentation online.
